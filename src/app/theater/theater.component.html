@@ -1,0 +1,42 @@
+<!-- Input chiave -->
+<p>Inserisci la tua chiave:
+<input type="text" #cerca (keyup.enter)="updateTheater(cerca.value); cerca.value=''; show='';">
+</p>
+
+<!-- Nuovo chiave -->
+<p>Altrimenti genera un nuovo spettacolo
+<app-newtheater (newTheaterEvent)="addTheater($event)"></app-newtheater>
+</p>
+
+<!-- Elenco chiavi -->
+<div *ngIf = "theaters.length !== 0">
+<li *ngFor="let teatro of theaters"> {{teatro}} </li>
+</div>
+
+<!-- Teatro -->
+<div *ngIf = "theaterKey !== ''">
+<h3> Prenota un posto nel teatro {{theaterKey}}</h3>
+
+<!-- Inserisci nome -->
+<p>Scrivi il tuo nome nel box, premi il tasto invio e infine scegli un posto nel teatro</p>
+<p><app-nominativo (newPrenotazioneEvent)="scrivi=$event"></app-nominativo></p>
+
+<!-- Notifica-->
+<app-notifica [mostra]="show"></app-notifica>
+
+<!-- Platea -->
+<h3> Platea </h3>
+<div *ngFor="let riga of platea; let m = index">
+        <button *ngFor="let posto of riga; let n = index" style="color:{{paint(posto)}}" (click)="showBooking(posto, m, n, platea)">
+            P{{m + 1}}-{{n + 1}}
+        </button>
+</div>
+
+<!-- Palco -->
+<h3> Palco </h3>
+<div *ngFor="let riga of palco; let m = index">
+        <button *ngFor="let posto of riga; let n = index" style="color:{{paint(posto)}}" (click)="showBooking(posto, m, n, palco)">
+            P{{m + 1}}-{{n + 1}}
+        </button>
+</div>
+</div>

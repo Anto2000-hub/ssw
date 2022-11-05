@@ -1,0 +1,16 @@
+button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font: bold 12px Arial, Helvetica, sans-serif;
+  padding: 10px 13px;
+}
+
+button:hover {
+  background-color: #4CAF50;
+  color: white;
+}
